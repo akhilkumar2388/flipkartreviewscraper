@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>Flipkart reviews scraping project</h1>
+    <h2>Enter Product Name</h2>
+    <br>
+    <form action="/product_reviews" method="POST" >
+        <input type="hidden" name="default_value" value="Nothing">    
+        <label for="user_input" class="note-message">Note - please provide specific product name eg. iphone 13 pro max, redmi note 8,SAMSUNG Single Door 5 Star Refrigerator, SONY Bravia 108 cm (43 inch)</label>
+        <br>
+        <input type="text" name="user_input" id="user_input" class="text-box" placeholder="Enter value">
+        <br>
+        <button type="submit" class="text-box">Search</button>
+    </form>    
+
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 100px;
+        }
+
+        h2 {
+            color: #FF0000;
+        }
+        h4 {
+            color: #FF0000;
+        }
+        p {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Oops, Something Went Wrong!</h2>
+    <p>It seems that you are searching a generic product.</p>
+    <br>
+    <h4>Please search for a specific product. Example eg. iphone 13 pro max, redmi note 8,SAMSUNG Single Door 5 Star Refrigerator, SONY Bravia 43 inch TV</h4>
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

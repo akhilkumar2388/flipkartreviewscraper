@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <style>
+        /* Add CSS styles for table styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #7153a1;
+            text-align: center;
+        }
+        h3 {
+            color: #c4654d;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h3>Saved data to csv file</h3>
+    <h1>{{ title }}</h1>
+    <table>
+        <tr>
+            <th>PersonName</th>
+            <th>Rating</th>
+            <th>Title</th>
+            <th>Review</th>
+            <!-- Add more <th> elements for additional keys -->
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item['PersonName'] }}</td>
+            <td>{{ item['Rating'] }}</td>
+            <td>{{ item['Title'] }}</td>
+            <td>{{ item['Review'] }}</td>
+            <!-- Add more <td> elements for additional keys -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
