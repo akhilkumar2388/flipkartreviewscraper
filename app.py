@@ -20,36 +20,46 @@ def index():
 
 @app.route('/product_reviews', methods=['POST'])
 def product_reviews():
+
         #get input from the user
         userinput = request.form.get('user_input')
 
-
-    
-
+        # access the flikart page with serach results
         response = requests.get(f"https://www.flipkart.com/search?q={userinput}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off")
+        #store the content in variable
         soup = BeautifulSoup(response.content,"html.parser")
-        #producturlfind = soup.find('a', class_='_1fQZEK')
+        
+        #get url for the product
         try:
                 producturl= "https://www.flipkart.com" + soup.find('a', class_='_1fQZEK')['href']
         except:
                return render_template('Errorpage.html')
+        
+        #go to the product page
         productrequest = requests.get(producturl)
 
+        #store the page content in a variable
         productmainpage = BeautifulSoup(productrequest.content,"html.parser")
        
+        #get the url for the reviews page
         try:
                 productreviewurl = "https://www.flipkart.com" + productmainpage.find('div', class_='col JOpGWq').a['href']
         except:
                 return render_template('Errorpage.html')
+        #send requuest to access the reviews page
         reviewpage = requests.get(productreviewurl)
+        #store the reviews page conetent in an variable
         reviewpagecontent = BeautifulSoup(reviewpage.content,"html.parser")
       
         # the url for getting the overall reviews
         OverallReviewUrl = "https://www.flipkart.com" + reviewpagecontent.find('div', class_='_33iqLu').find('div').find('a')['href']
         
-
+        #go to the overall reviews tab on the reviews page
         overallreviews = requests.get(OverallReviewUrl)
+
+        #store the overall reviews content in a variable
         overallreviewscontent = BeautifulSoup(overallreviews.content,"html.parser")
+        #get the full product name from the variable above
         productname = overallreviewscontent.find('div', class_='_2s4DIt _1CDdy2').text 
         
         # get the reviews.
